@@ -32,7 +32,7 @@ do
 
     echo "Storing KEY for host $host"
 
-    ssh-keyscan -p $port-H $host >> ~/.ssh/known_hosts
+    ssh-keyscan -p $port -H $host >> ~/.ssh/known_hosts
 
     echo "Running command on host ${host} using port ${port} and user ${user}"
 
