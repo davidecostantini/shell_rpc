@@ -9,6 +9,7 @@ do
     key=${arr[3]}
 
 
+    #Check comments
     if [ "${l:0:1}" == "#" ];then
         continue
     fi

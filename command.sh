@@ -1,17 +1,3 @@
 #!/bin/sh
-#cp /etc/nagios/nrpe.cfg /tmp/old_nrpe.cfg
-#sed -i -- 's/172.16.16.209/172.20.154.24/g' /etc/nagios/nrpe.cfg
-cd /tmp
-yum install git -y
-rm -rf /tmp/nagios_plugins
-git clone https://github.com/infomentum/nagios_plugins.git /tmp/nagios_plugins
-rm -rf /usr/lib64/nagios/plugins/*
-mv /tmp/nagios_plugins/* /usr/lib64/nagios/plugins/
-wget -O /tmp/ptnrpe https://www.dropbox.com/s/btdbye1b1w2pmpb/ptnrpe?dl=1
-rm -rf /etc/nagios/nrpe.cfg_old
-mv /etc/nagios/nrpe.cfg /etc/nagios/nrpe.cfg_old
-mv /tmp/ptnrpe /etc/nagios/nrpe.cfg
-restorecon -R /etc/nagios/nrpe.cfg
-restorecon -R /usr/lib64/nagios/plugins/
-service nrpe restart
-
+KEY="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCsi+g0bU6AMZOZHrtW2kI9lLydjV7CorzEJL+CJSMV7+ItaLNWhcCELK2G9atQ3m3Jj9C7i3JIk+XvImdeocrt1rC4MEMSgdnsy3caKuuh01SueMMa7ACK3r1u5c3DoDchCf/pfEtW5BW2HZDtMFgnPvz362F+G4+9//Sszjt+pf0c+2uU+IbutgAt/c1Whw9R3qfos1x+dNfDvWkmZCOnGs4kf6NrJn2QILlvJbtUFIz7QiQTW6JX/EP+j3JzIyErBkzRF20C7RAAI5SiPGvIVcDn7am+LXb/VRL6oHBMeZYPd597oKzDHPx5MDfrG/JxJzEzPj02aOlEiOuTzmK5fIaOzwEFwHi5NiCoRZEU2tZHomzohbJIiNz2jS70z+41kq9Q00fH/jkZ4aX3MjI+JoDARIM5pNacuSjOm/wD0gXq9hl8Xpew+v5x6BVXXqmnDo8hGKwrQhFsf5A8go1kw1LFlLpMPOV7jWuVNdpiw+SCDT5iw3EQXmC7BNrFppMD+DdzAUkNPgwHnRM3M3/jzPk7/j/+7tM4Lq92/BlEvNbr1Z5lSQoVs5H3AEHFic8abj7/gLR/q9xbWbvAXKofUQrbaMFlpmbEff+XR9XJHPBfe/Uxi5zBbxTI4oF+P6fLL3yaD8Ei/u2yl3/YZq5Jhf8V3i/IQ07GsQfB+mib9Q== info@infomentum.co.uk"
+echo "$KEY" >> /home/oracle/.ssh/authorized_keys
