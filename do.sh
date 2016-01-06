@@ -39,9 +39,9 @@ do
 
     if [ "$key" != "" ];then
         echo "Using key: $key"
-        ssh -T -i $key -p $port $user@$host < command.sh >> log_$host &
+        ssh -T -i $key -p $port $user@$host < command.sh &> log_$host #&
     else
-        ssh -T -p $port $user@$host < command.sh >> log_$host &
+        ssh -T -p $port $user@$host < command.sh &> log_$host #&
     fi
 
     echo "---------------------------------------------"
